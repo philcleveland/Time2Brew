@@ -11,6 +11,12 @@ namespace Time2Brew.Core
 	{
 		public GeneralBrewStatsViewModel () : this (null)
 		{
+		}
+
+		public GeneralBrewStatsViewModel (IScreen hostScreen)
+		{
+			HostScreen = hostScreen ?? Locator.Current.GetService<IScreen> ();
+
 			SetGrainBillWeightTo = ReactiveCommand.Create ();
 			SetGrainBillWeightTo
 				.Select (x => (double)x)
@@ -25,11 +31,6 @@ namespace Time2Brew.Core
 			SetWortLossTo
 				.Select (x => (double)x)
 				.ToProperty (this, x => x.AnticipatedWortLossVolume, out _AnticipatedWortLossVolume);
-		}
-
-		public GeneralBrewStatsViewModel (IScreen hostScreen)
-		{
-			HostScreen = hostScreen ?? Locator.Current.GetService<IScreen> ();
 		}
 
 		[IgnoreDataMember]
