@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Time2Brew.Core.GeneralBrewStatsView">
+	<ContentPage.Content>
+	<StackLayout Orientation="Vertical">
+
+		<Label Text="Grain Bill"/>
+		<StackLayout Orientation="Horizontal">
+			<Stepper x:Name="stpGrainBill" Minimum="0" Maximum="1000" Increment="0.01" Value="10.00"/>
+			<Entry x:Name="entryGrainBill" Placeholder="10.0" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+			<Label Text="lbs"/>
+		</StackLayout>
+
+		<Label Text="Amount Finished Beer"/>
+		<StackLayout Orientation="Horizontal">
+			<Stepper x:Name="stpFinishedBeer" Minimum="0" Maximum="1000" Increment="0.01" Value="5.50"/>
+			<Entry x:Name="entryFinishedBeer" Placeholder="5.5" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+			<Label Text="gal"/>
+		</StackLayout>
+
+		<Label Text="Anticipated Wort Loss"/>
+		<StackLayout Orientation="Horizontal">
+			<Stepper x:Name="stpWortLoss" Minimum="0" Maximum="1000" Increment="0.01" Value="0.25"/>
+			<Entry x:Name="entryWortLoss" Placeholder="0.25" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+			<Label Text="gal"/>
+		</StackLayout>
+
+
+	</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

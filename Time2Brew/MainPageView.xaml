@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		     xmlns:rui="clr-namespace:ReactiveUI.XamForms;assembly=ReactiveUI"
+			 x:Class="Time2Brew.Core.MainPageView">
+	<ContentPage.Content>
+		<StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
+			
+			<Button x:Name="btnStartBrewing" Text="Start Brewing" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+			<Button x:Name="btnNewRecipe" Text="New Recipe" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+			<Button x:Name="btnImportRecipe" Text="Import Recipe" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

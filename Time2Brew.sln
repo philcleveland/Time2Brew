@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Time2Brew-Core", "Time2Brew\Time2Brew-Core.csproj", "{AE3AE0FC-2823-4FAD-AA47-B6C9370110FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Time2Brew.Droid", "Droid\Time2Brew.Droid.csproj", "{A9F23E12-BA4C-4D2D-BB9D-EE1321FDA32C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9F23E12-BA4C-4D2D-BB9D-EE1321FDA32C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9F23E12-BA4C-4D2D-BB9D-EE1321FDA32C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9F23E12-BA4C-4D2D-BB9D-EE1321FDA32C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9F23E12-BA4C-4D2D-BB9D-EE1321FDA32C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE3AE0FC-2823-4FAD-AA47-B6C9370110FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE3AE0FC-2823-4FAD-AA47-B6C9370110FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE3AE0FC-2823-4FAD-AA47-B6C9370110FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE3AE0FC-2823-4FAD-AA47-B6C9370110FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
