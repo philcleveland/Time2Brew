@@ -13,19 +13,10 @@ namespace Time2Brew.Core
 		{
 			InitializeComponent ();
 
-			this.WhenAnyValue (x => x.ViewModel.HostScreen.Router)
-				.Select (x => x.NavigateCommandFor<GeneralBrewStatsViewModel> ())
-				.BindTo (this, x => x.btnStartBrewing.Command);
-
-//			this.WhenAnyValue (x => x.ViewModel.HostScreen.Router)
-//				.Select (x => x.NavigateCommandFor<Page1ViewModel> ())
-//				.BindTo (this, x => x.btnNewRecipe.Command);
-//
-//			this.WhenAnyValue (x => x.ViewModel.HostScreen.Router)
-//				.Select (x => x.NavigateCommandFor<Page1ViewModel> ())
-//				.BindTo (this, x => x.btnImportRecipe.Command);
-
-
+			this.BindCommand (ViewModel, vm => vm.NavigateStartBrewing, v => v.btnStartBrewing);
+			//TODO
+//			this.BindCommand (ViewModel, vm => vm.NavigateNewRecipe, v => v.btnNewRecipe);
+//			this.BindCommand (ViewModel, vm => vm.NavigateImportRecipe, v => v.btnImportRecipe);
 		}
 
 		public MainPageViewModel ViewModel {

@@ -31,6 +31,10 @@ namespace Time2Brew.Core
 			SetWortLossTo
 				.Select (x => (double)x)
 				.ToProperty (this, x => x.AnticipatedWortLossVolume, out _AnticipatedWortLossVolume);
+
+			NavigateToMashStats
+				.ObserveOn (RxApp.MainThreadScheduler)
+				.Subscribe (x => HostScreen.Router.Navigate.Execute (new MashStatsViewModel ()));
 		}
 
 		[IgnoreDataMember]
@@ -48,6 +52,8 @@ namespace Time2Brew.Core
 		[IgnoreDataMember] public ReactiveCommand<object> SetFinishedBeerVolumeTo { get; private set; }
 
 		[IgnoreDataMember] public ReactiveCommand<object> SetWortLossTo { get; private set; }
+
+		[IgnoreDataMember] public ReactiveCommand<object> NavigateToMashStats { get; private set; }
 
 		private ObservableAsPropertyHelper<double> _GrainBillWeight;
 

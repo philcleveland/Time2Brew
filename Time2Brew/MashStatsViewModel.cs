@@ -1,40 +1,83 @@
 ﻿using System;
 using ReactiveUI;
+using System.Runtime.Serialization;
+using Splat;
+using System.Reactive.Linq;
 
 namespace Time2Brew.Core
 {
-	public class MashStatsViewModel : ReactiveObject
+	public class MashStatsViewModel : ReactiveObject, IRoutableViewModel
 	{
 		public MashStatsViewModel ()
 		{
 		}
 
-		private double _MashTemperature;
+		public MashStatsViewModel (IScreen hostScreen)
+		{
+			HostScreen = hostScreen ?? Locator.Current.GetService<IScreen> ();
+
+			SetMashTempTo = ReactiveCommand.Create ();
+			SetMashTempTo
+				.Select (x => (double)x)
+				.ToProperty (this, vm => vm.MashTemperature, out _MashTemperature);
+
+			SetGrainTempTo = ReactiveCommand.Create ();
+			SetGrainTempTo
+				.Select (x => (double)x)
+				.ToProperty (this, vm => vm.GrainTemperature, out _GrainTemperature);
+
+			SetMashThicknessTo = ReactiveCommand.Create ();
+			SetMashThicknessTo
+				.Select (x => (double)x)
+				.ToProperty (this, vm => vm.MashThickness, out _MashThickness);
+
+			SetMashLengthTo = ReactiveCommand.Create ();
+			SetMashLengthTo
+				.Select (x => (TimeSpan)x)
+				.ToProperty (this, vm => vm.MashLength, out _MashLength);
+
+		}
+
+		[IgnoreDataMember]
+		public string UrlPathSegment {
+			get {
+				return "Mash Stats";
+			}
+		}
+
+		[IgnoreDataMember]
+		public IScreen HostScreen { get; protected set; }
+
+		[IgnoreDataMember] public ReactiveCommand<object> SetMashTempTo { get; private set; }
+
+		[IgnoreDataMember] public ReactiveCommand<object> SetGrainTempTo { get; private set; }
+
+		[IgnoreDataMember] public ReactiveCommand<object> SetMashThicknessTo { get; private set; }
+
+		[IgnoreDataMember] public ReactiveCommand<object> SetMashLengthTo { get; private set; }
+
+		private ObservableAsPropertyHelper<double> _MashTemperature;
 
 		public double MashTemperature { 
-			get { return _MashTemperature; }
-			set { this.RaiseAndSetIfChanged (ref _MashTemperature, value); }	
+			get { return _MashTemperature.Value; }
 		}
 
-		private double _GrainTemperature;
+		private ObservableAsPropertyHelper<double> _GrainTemperature;
 
 		public double GrainTemperature { 
-			get { return _GrainTemperature; }
-			set { this.RaiseAndSetIfChanged (ref _GrainTemperature, value); }	
+			get { return _GrainTemperature.Value; }
 		}
 
-		private double _MashThickness;
+		private ObservableAsPropertyHelper<double> _MashThickness;
 
 		public double MashThickness { 
-			get { return _MashThickness; }
-			set { this.RaiseAndSetIfChanged (ref _MashThickness, value); }	
+			get { return _MashThickness.Value; }
 		}
 
-		private TimeSpan _MashLength;
+		private ObservableAsPropertyHelper<TimeSpan> _MashLength;
 
 		public TimeSpan MashLength { 
-			get { return _MashLength; }
-			set { this.RaiseAndSetIfChanged (ref _MashLength, value); }	
+			get { return _MashLength.Value; }
 		}
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using ReactiveUI;
 using Splat;
+using System.Reactive.Linq;
 
 namespace Time2Brew.Core
 {
@@ -10,7 +11,6 @@ namespace Time2Brew.Core
 			get { return "Time 2 Brew"; }
 		}
 
-
 		public MainPageViewModel () : this (null)
 		{
 		}
@@ -18,6 +18,11 @@ namespace Time2Brew.Core
 		public MainPageViewModel (IScreen hostScreen)
 		{
 			HostScreen = hostScreen ?? Locator.Current.GetService<IScreen> ();
+
+			NavigateStartBrewing = ReactiveCommand.Create ();
+			NavigateStartBrewing
+				.ObserveOn (RxApp.MainThreadScheduler)
+				.Subscribe (_ => HostScreen.Router.Navigate.Execute (new GeneralBrewStatsViewModel (HostScreen)));
 		}
 
 		public IScreen HostScreen {
@@ -25,6 +30,7 @@ namespace Time2Brew.Core
 			protected set;
 		}
 
+		public ReactiveCommand<object> NavigateStartBrewing { get; private set; }
 	}
 }
 

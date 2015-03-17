@@ -1,5 +1,30 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Time2Brew.Core.MashStatsView">
 	<ContentPage.Content>
+		<StackLayout Orientation="Vertical">
+
+			<Label Text="Mash Temperature"/>
+			<StackLayout Orientation="Horizontal">
+				<Stepper x:Name="stpMashTemp" Minimum="50" Maximum="250" Increment="0.01" Value="150.00"/>
+				<Entry x:Name="entryMashTemp" Placeholder="152.0" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+				<Label Text="F"/>
+			</StackLayout>
+
+			<Label Text="Mash Thickness"/>
+			<StackLayout Orientation="Horizontal">
+				<Stepper x:Name="stpMashThickness" Minimum="0" Maximum="5" Increment="0.01" Value="1.33"/>
+				<Entry x:Name="entryMashThickness" Placeholder="1.33" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+				<Label Text="qt/lbs"/>
+			</StackLayout>
+
+			<Label Text="Grain Temperature"/>
+			<StackLayout Orientation="Horizontal">
+				<Stepper x:Name="stpGrainTemp" Minimum="0" Maximum="1000" Increment="0.01" Value="0.25"/>
+				<Entry x:Name="entryGrainTemp" Placeholder="0.25" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+				<Label Text="F"/>
+			</StackLayout>
+
+
+		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>
