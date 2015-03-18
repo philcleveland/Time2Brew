@@ -12,6 +12,8 @@ namespace Time2Brew.Core
 		{
 			InitializeComponent ();
 
+			this.BindCommand (ViewModel, vm => vm.NavigateToMashStats, v => v.btnNext);
+
 			//Grain bill
 			this.WhenActivated (d => {
 				d (this.WhenAnyValue (x => x.stpGrainBill.Value)

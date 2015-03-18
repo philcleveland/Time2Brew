@@ -6,6 +6,7 @@ using System.Reactive.Linq;
 
 namespace Time2Brew.Core
 {
+	[DataContract]
 	public class MashStatsViewModel : ReactiveObject, IRoutableViewModel
 	{
 		public MashStatsViewModel ()
@@ -58,24 +59,28 @@ namespace Time2Brew.Core
 
 		private ObservableAsPropertyHelper<double> _MashTemperature;
 
+		[DataMember]
 		public double MashTemperature { 
 			get { return _MashTemperature.Value; }
 		}
 
 		private ObservableAsPropertyHelper<double> _GrainTemperature;
 
+		[DataMember]
 		public double GrainTemperature { 
 			get { return _GrainTemperature.Value; }
 		}
 
 		private ObservableAsPropertyHelper<double> _MashThickness;
 
+		[DataMember]
 		public double MashThickness { 
 			get { return _MashThickness.Value; }
 		}
 
 		private ObservableAsPropertyHelper<TimeSpan> _MashLength;
 
+		[DataMember]
 		public TimeSpan MashLength { 
 			get { return _MashLength.Value; }
 		}

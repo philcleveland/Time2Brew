@@ -9,6 +9,10 @@ namespace Time2Brew.Core
 	[DataContract]
 	public class GeneralBrewStatsViewModel : ReactiveObject, IRoutableViewModel
 	{
+		const double DefaultGrainBill = 10.0;
+		const double DefaultFinishVolume = 5.5;
+		const double DefaultWortLoss = 0.25;
+
 		public GeneralBrewStatsViewModel () : this (null)
 		{
 		}
@@ -19,22 +23,29 @@ namespace Time2Brew.Core
 
 			SetGrainBillWeightTo = ReactiveCommand.Create ();
 			SetGrainBillWeightTo
+			//.StartWith (DefaultGrainBill) 
 				.Select (x => (double)x)
+				.Where (x => x > 0.0)
 				.ToProperty (this, x => x.GrainBillWeight, out _GrainBillWeight);
 
 			SetFinishedBeerVolumeTo = ReactiveCommand.Create ();
 			SetFinishedBeerVolumeTo
+			//.StartWith (DefaultFinishVolume)
 				.Select (x => (double)x)
+				.Where (x => x > 0.0)
 				.ToProperty (this, x => x.FinishedBeerVolume, out _FinishedBeerVolume);
 
 			SetWortLossTo = ReactiveCommand.Create ();
 			SetWortLossTo
+			//.StartWith (DefaultWortLoss)
 				.Select (x => (double)x)
+				.Where (x => x > 0.0)
 				.ToProperty (this, x => x.AnticipatedWortLossVolume, out _AnticipatedWortLossVolume);
 
+			NavigateToMashStats = ReactiveCommand.Create ();
 			NavigateToMashStats
 				.ObserveOn (RxApp.MainThreadScheduler)
-				.Subscribe (x => HostScreen.Router.Navigate.Execute (new MashStatsViewModel ()));
+				.Subscribe (x => HostScreen.Router.Navigate.Execute (new MashStatsViewModel (HostScreen)));
 		}
 
 		[IgnoreDataMember]

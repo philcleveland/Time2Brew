@@ -2,9 +2,11 @@
 using ReactiveUI;
 using Splat;
 using System.Reactive.Linq;
+using System.Runtime.Serialization;
 
 namespace Time2Brew.Core
 {
+	[DataContract]
 	public class MainPageViewModel : ReactiveObject, IRoutableViewModel
 	{
 		public string UrlPathSegment {
@@ -25,11 +27,13 @@ namespace Time2Brew.Core
 				.Subscribe (_ => HostScreen.Router.Navigate.Execute (new GeneralBrewStatsViewModel (HostScreen)));
 		}
 
+		[IgnoreDataMember]
 		public IScreen HostScreen {
 			get;
 			protected set;
 		}
 
+		[IgnoreDataMember]
 		public ReactiveCommand<object> NavigateStartBrewing { get; private set; }
 	}
 }

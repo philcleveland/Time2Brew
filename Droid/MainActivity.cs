@@ -28,10 +28,9 @@ namespace Time2Brew.Droid
 			Forms.Init (this, bundle);
 
 			var mainPage = RxApp.SuspensionHost.GetAppState<AppBootstrapper> ().CreateMainPage ();
-//			var bs = new AppBootstrapper ();
-//			var mainPage = bs.CreateMainPage ();
 			this.SetPage (mainPage);
 
+			//TODO: Figure out why things fail when I use this. I get null exceptions in the code behind WhenAny's
 //			this.LoadApplication (new App ());
 
 		}
