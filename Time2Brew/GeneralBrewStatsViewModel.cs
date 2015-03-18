@@ -23,21 +23,21 @@ namespace Time2Brew.Core
 
 			SetGrainBillWeightTo = ReactiveCommand.Create ();
 			SetGrainBillWeightTo
-			//.StartWith (DefaultGrainBill) 
+				.StartWith (DefaultGrainBill) 
 				.Select (x => (double)x)
 				.Where (x => x > 0.0)
 				.ToProperty (this, x => x.GrainBillWeight, out _GrainBillWeight);
 
 			SetFinishedBeerVolumeTo = ReactiveCommand.Create ();
 			SetFinishedBeerVolumeTo
-			//.StartWith (DefaultFinishVolume)
+				.StartWith (DefaultFinishVolume)
 				.Select (x => (double)x)
 				.Where (x => x > 0.0)
 				.ToProperty (this, x => x.FinishedBeerVolume, out _FinishedBeerVolume);
 
 			SetWortLossTo = ReactiveCommand.Create ();
 			SetWortLossTo
-			//.StartWith (DefaultWortLoss)
+				.StartWith (DefaultWortLoss)
 				.Select (x => (double)x)
 				.Where (x => x > 0.0)
 				.ToProperty (this, x => x.AnticipatedWortLossVolume, out _AnticipatedWortLossVolume);

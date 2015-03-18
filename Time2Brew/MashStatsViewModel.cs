@@ -9,6 +9,10 @@ namespace Time2Brew.Core
 	[DataContract]
 	public class MashStatsViewModel : ReactiveObject, IRoutableViewModel
 	{
+		const double DefaultMashTemp = 152.0;
+		const double DefaultMashThickness = 1.33;
+		const double DefaultGrainTemp = 69.0;
+
 		public MashStatsViewModel ()
 		{
 		}
@@ -19,16 +23,19 @@ namespace Time2Brew.Core
 
 			SetMashTempTo = ReactiveCommand.Create ();
 			SetMashTempTo
+				.StartWith (DefaultMashTemp)
 				.Select (x => (double)x)
 				.ToProperty (this, vm => vm.MashTemperature, out _MashTemperature);
 
 			SetGrainTempTo = ReactiveCommand.Create ();
 			SetGrainTempTo
+				.StartWith (DefaultGrainTemp)
 				.Select (x => (double)x)
 				.ToProperty (this, vm => vm.GrainTemperature, out _GrainTemperature);
 
 			SetMashThicknessTo = ReactiveCommand.Create ();
 			SetMashThicknessTo
+				.StartWith (DefaultMashThickness)
 				.Select (x => (double)x)
 				.ToProperty (this, vm => vm.MashThickness, out _MashThickness);
 
