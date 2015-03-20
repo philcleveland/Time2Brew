@@ -88,7 +88,7 @@ namespace Time2Brew.Core
 
 		static double CalculateStrikeWaterVolume (BrewData data)
 		{
-			return (data.GrainBill * data.MashThickness) / QuartsPerGallon;
+			return ((data.GrainBill * data.MashThickness) / QuartsPerGallon) + data.EquipmentLoss;
 		}
 
 		static double CaluclateStrikeWaterTemperature (BrewData data)
