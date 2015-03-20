@@ -25,18 +25,21 @@ namespace Time2Brew.Core
 			SetMashTempTo
 				.StartWith (DefaultMashTemp)
 				.Select (x => (double)x)
+				.Where (x => x > 0.0)
 				.ToProperty (this, vm => vm.MashTemperature, out _MashTemperature);
 
 			SetGrainTempTo = ReactiveCommand.Create ();
 			SetGrainTempTo
 				.StartWith (DefaultGrainTemp)
 				.Select (x => (double)x)
+				.Where (x => x > 0.0)
 				.ToProperty (this, vm => vm.GrainTemperature, out _GrainTemperature);
 
 			SetMashThicknessTo = ReactiveCommand.Create ();
 			SetMashThicknessTo
 				.StartWith (DefaultMashThickness)
 				.Select (x => (double)x)
+				.Where (x => x > 0.0)
 				.ToProperty (this, vm => vm.MashThickness, out _MashThickness);
 
 			SetMashLengthTo = ReactiveCommand.Create ();
@@ -44,6 +47,10 @@ namespace Time2Brew.Core
 				.Select (x => (TimeSpan)x)
 				.ToProperty (this, vm => vm.MashLength, out _MashLength);
 
+			NavigateToWaterProjections = ReactiveCommand.Create ();
+			NavigateToWaterProjections
+				.Select (x => new WaterProjectionsViewModel ())
+				.Subscribe (HostScreen.Router.Navigate.Execute);
 		}
 
 		[IgnoreDataMember]
@@ -63,6 +70,8 @@ namespace Time2Brew.Core
 		[IgnoreDataMember] public ReactiveCommand<object> SetMashThicknessTo { get; private set; }
 
 		[IgnoreDataMember] public ReactiveCommand<object> SetMashLengthTo { get; private set; }
+
+		[IgnoreDataMember] public ReactiveCommand<object> NavigateToWaterProjections { get; private set; }
 
 		private ObservableAsPropertyHelper<double> _MashTemperature;
 

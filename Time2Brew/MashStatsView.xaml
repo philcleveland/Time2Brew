@@ -24,7 +24,17 @@
 				<Label Text="F"/>
 			</StackLayout>
 
+			<Label Text="Mash Length"/>
+			<StackLayout Orientation="Horizontal">
 
+<!--				<Stepper x:Name="stpMashLength" Minimum="0" Maximum="360" Increment="0.01" Value="60.00"/>
+				<Entry x:Name="entryMashLength" Placeholder="0.25" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+				<Label Text="F"/>-->
+			</StackLayout>
+
+			<TimePicker x:Name="tpMashLength"/>
+
+			<Button x:Name="btnNext" Text="Next"/>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>
