@@ -11,6 +11,13 @@ namespace Time2Brew.Core
 		public WaterProjectionsView ()
 		{
 			InitializeComponent ();
+
+			this.OneWayBind (ViewModel, vm => vm.TotalWaterVolume, v => v.lblTotalWaterVolume.Text);
+			this.OneWayBind (ViewModel, vm => vm.StrikeWaterVolume, v => v.lblStrikeVolume.Text);
+			this.OneWayBind (ViewModel, vm => vm.StrikeWaterTemperature, v => v.lblStrikeTemp.Text);
+			this.OneWayBind (ViewModel, vm => vm.SpargeWaterVolume, v => v.lblSpargeVolume.Text);
+			this.OneWayBind (ViewModel, vm => vm.SpargeWaterTemperature, v => v.lblSpargeTemp.Text);
+
 		}
 
 		public WaterProjectionsViewModel ViewModel {

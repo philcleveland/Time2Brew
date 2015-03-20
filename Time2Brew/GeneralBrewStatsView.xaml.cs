@@ -14,6 +14,8 @@ namespace Time2Brew.Core
 
 			this.BindCommand (ViewModel, vm => vm.NavigateToMashStats, v => v.btnNext);
 
+			//TODO: Create a control for editable stepper that encapsulates the Rx setup
+
 			//Grain bill
 			this.WhenActivated (d => {
 				d (this.WhenAnyValue (x => x.stpGrainBill.Value)
@@ -87,6 +89,31 @@ namespace Time2Brew.Core
 
 			this.WhenActivated (d => {
 				d (this.WhenAnyValue (x => x.ViewModel.AnticipatedWortLossVolume).Subscribe (x => this.entryWortLoss.Text = x.ToString ()));
+			});
+
+			//Equipment Loss
+			this.WhenActivated (d => {
+				d (this.WhenAnyValue (x => x.stpEquipmentLoss.Value)
+					.SelectMany (x => ViewModel.SetEquipmentLossTo.ExecuteAsync (x))
+					.Subscribe ());
+			});
+
+			this.WhenActivated (d => {
+				d (this.WhenAnyValue (x => x.entryEquipmentLoss.Text)
+					.Select (x => {
+					double val = 0.0;
+					return double.TryParse (x, out val) ? val : 0.0;
+				})
+					.SelectMany (x => ViewModel.SetEquipmentLossTo.ExecuteAsync (x))
+					.Subscribe ());
+			});
+
+			this.WhenActivated (d => {
+				d (this.WhenAnyValue (x => x.ViewModel.AnticipatedEquipmentLossVolume).Subscribe (x => this.stpEquipmentLoss.Value = x));
+			});
+
+			this.WhenActivated (d => {
+				d (this.WhenAnyValue (x => x.ViewModel.AnticipatedEquipmentLossVolume).Subscribe (x => this.entryEquipmentLoss.Text = x.ToString ()));
 			});
 
 

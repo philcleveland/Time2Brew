@@ -1,5 +1,33 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Time2Brew.Core.WaterProjectionsView">
 	<ContentPage.Content>
+		<StackLayout>
+			<Label Text="Water Projections"/>
+			<TableView> 
+				<TableView.Root>
+					<TableSection>
+						<TextCell Text="Total water required (gal)"/>	
+						<TextCell x:Name="lblTotalWaterVolume"/>
+					</TableSection>
+
+					<TableSection>
+						<TextCell Text="Strike water volume (gal)"/>	
+						<TextCell x:Name="lblStrikeVolume"/>
+
+						<TextCell Text="Strike water temperature (F)"/>	
+						<TextCell x:Name="lblStrikeTemp"/>
+					</TableSection>
+
+					<TableSection>
+						<TextCell Text="Sparge water volume (gal)"/>	
+						<TextCell x:Name="lblSpargeVolume"/>
+
+						<TextCell Text="Sparge water temperature (F)"/>	
+						<TextCell x:Name="lblSpargeTemp"/>
+					</TableSection>
+					
+				</TableView.Root>
+			</TableView>
+		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

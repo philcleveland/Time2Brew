@@ -26,13 +26,17 @@
 
 			<Label Text="Mash Length"/>
 			<StackLayout Orientation="Horizontal">
-
-<!--				<Stepper x:Name="stpMashLength" Minimum="0" Maximum="360" Increment="0.01" Value="60.00"/>
-				<Entry x:Name="entryMashLength" Placeholder="0.25" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
-				<Label Text="F"/>-->
+				<Stepper x:Name="stpMashTime" Minimum="0" Maximum="1000" Increment="1" Value="60"/>
+				<Entry x:Name="entryMashTime" Placeholder="60" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+				<Label Text="min"/>
 			</StackLayout>
 
-			<TimePicker x:Name="tpMashLength"/>
+			<Label Text="Boil Length"/>
+			<StackLayout Orientation="Horizontal">
+				<Stepper x:Name="stpBoilTime" Minimum="0" Maximum="1000" Increment="1" Value="60"/>
+				<Entry x:Name="entryBoilTime" Placeholder="60" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+				<Label Text="min"/>
+			</StackLayout>
 
 			<Button x:Name="btnNext" Text="Next"/>
 		</StackLayout>

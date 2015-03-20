@@ -82,6 +82,49 @@ namespace Time2Brew.Core
 
 			this.OneWayBind (ViewModel, vm => vm.MashThickness, v => v.stpMashThickness.Value);
 			this.OneWayBind (ViewModel, vm => vm.MashThickness, v => v.entryMashThickness.Text);
+
+			//Mash Time
+			this.WhenActivated (d => {
+				d (this.WhenAnyValue (x => x.stpMashTime.Value)
+					.Skip (1)
+					.SelectMany (x => ViewModel.SetMashLengthTo.ExecuteAsync (x))
+					.Subscribe ());
+			});
+
+			this.WhenActivated (d => {
+				d (this.WhenAnyValue (x => x.entryMashTime.Text)
+					.Skip (1)
+					.Select (x => {
+					double val = 0.0;
+					return double.TryParse (x, out val) ? val : 0.0;
+				})
+					.SelectMany (x => ViewModel.SetMashLengthTo.ExecuteAsync (x))
+					.Subscribe ());
+			});
+			this.OneWayBind (ViewModel, vm => vm.MashLength, v => v.stpMashTime.Value);
+			this.OneWayBind (ViewModel, vm => vm.MashLength, v => v.entryMashTime.Text);
+
+			//Boil Time
+			this.WhenActivated (d => {
+				d (this.WhenAnyValue (x => x.stpBoilTime.Value)
+					.Skip (1)
+					.SelectMany (x => ViewModel.SetBoilLengthTo.ExecuteAsync (x))
+					.Subscribe ());
+			});
+
+			this.WhenActivated (d => {
+				d (this.WhenAnyValue (x => x.entryBoilTime.Text)
+					.Skip (1)
+					.Select (x => {
+					double val = 0.0;
+					return double.TryParse (x, out val) ? val : 0.0;
+				})
+					.SelectMany (x => ViewModel.SetBoilLengthTo.ExecuteAsync (x))
+					.Subscribe ());
+			});
+
+			this.OneWayBind (ViewModel, vm => vm.BoilLength, v => v.stpBoilTime.Value);
+			this.OneWayBind (ViewModel, vm => vm.BoilLength, v => v.entryBoilTime.Text);
 		}
 
 		public MashStatsViewModel ViewModel {

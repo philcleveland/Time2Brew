@@ -5,22 +5,29 @@
 
 		<Label Text="Grain Bill"/>
 		<StackLayout Orientation="Horizontal">
-			<Stepper x:Name="stpGrainBill" Minimum="0" Maximum="1000" Increment="0.01"/>
+			<Stepper x:Name="stpGrainBill" Minimum="0" Maximum="1000" Increment="0.5"/>
 			<Entry x:Name="entryGrainBill" Placeholder="10.0" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
 			<Label Text="lbs"/>
 		</StackLayout>
 
 		<Label Text="Amount Finished Beer"/>
 		<StackLayout Orientation="Horizontal">
-			<Stepper x:Name="stpFinishedBeer" Minimum="0" Maximum="1000" Increment="0.01"/>
+			<Stepper x:Name="stpFinishedBeer" Minimum="0" Maximum="1000" Increment="0.5"/>
 			<Entry x:Name="entryFinishedBeer" Placeholder="5.5" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
 			<Label Text="gal"/>
 		</StackLayout>
 
-		<Label Text="Anticipated Wort Loss"/>
+		<Label Text="Anticipated Wort Loss in Trub"/>
 		<StackLayout Orientation="Horizontal">
 			<Stepper x:Name="stpWortLoss" Minimum="0" Maximum="1000" Increment="0.01"/>
 			<Entry x:Name="entryWortLoss" Placeholder="0.25" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
+			<Label Text="gal"/>
+		</StackLayout>
+
+		<Label Text="Anticipated Wort Loss in Equipment"/>
+		<StackLayout Orientation="Horizontal">
+			<Stepper x:Name="stpEquipmentLoss" Minimum="0" Maximum="1000" Increment="0.01"/>
+			<Entry x:Name="entryEquipmentLoss" Placeholder="1.0" Keyboard="Numeric" HorizontalOptions="FillAndExpand"/>
 			<Label Text="gal"/>
 		</StackLayout>
 
