@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Time2Brew.Core.MashTimerView">
 	<ContentPage.Content>
+		<StackLayout Orientation="Vertical">
+			<Label x:Name="lblClockDisplay" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
+			<StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+				<Button x:Name="btnStart" Text="Start"/>
+				<Button x:Name="btnPause" Text="Pause"/>
+				<Button x:Name="btnReset" Text="Reset"/>
+			</StackLayout>
+			<Button x:Name="btnNext" Text="Next"/>
+		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

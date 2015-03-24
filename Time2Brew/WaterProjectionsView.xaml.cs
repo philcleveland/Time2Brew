@@ -17,6 +17,7 @@ namespace Time2Brew.Core
 			this.OneWayBind (ViewModel, vm => vm.StrikeWaterTemperature, v => v.lblStrikeTemp.Text);
 			this.OneWayBind (ViewModel, vm => vm.SpargeWaterVolume, v => v.lblSpargeVolume.Text);
 			this.OneWayBind (ViewModel, vm => vm.SpargeWaterTemperature, v => v.lblSpargeTemp.Text);
+			this.BindCommand (ViewModel, vm => vm.NavigateToMashTimer, v => v.btnNext);
 
 		}
 

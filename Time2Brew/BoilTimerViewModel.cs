@@ -7,13 +7,18 @@ namespace Time2Brew.Core
 	[DataContract]
 	public class BoilTimerViewModel : ReactiveObject, IRoutableViewModel
 	{
-		public BoilTimerViewModel ()
-		{
-		}
-
 		public BoilTimerViewModel (IScreen hostScreen)
 		{
-			
+			HostScreen = hostScreen;
+
+			StartTimer = ReactiveCommand.Create ();
+			StartTimer.Subscribe ();
+
+			PauseTimer = ReactiveCommand.Create ();
+			PauseTimer.Subscribe ();
+
+			ResetTimer = ReactiveCommand.Create ();
+			ResetTimer.Subscribe ();
 		}
 
 		[IgnoreDataMember]
@@ -25,6 +30,12 @@ namespace Time2Brew.Core
 
 		[IgnoreDataMember]
 		public IScreen HostScreen { get; protected set; }
+
+		public ReactiveCommand<object> StartTimer { get; private set; }
+
+		public ReactiveCommand<object> PauseTimer { get; private set; }
+
+		public ReactiveCommand<object> ResetTimer { get; private set; }
 	}
 }
 

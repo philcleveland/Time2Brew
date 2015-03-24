@@ -2,6 +2,7 @@
 using System.Runtime.Serialization;
 using ReactiveUI;
 using Splat;
+using System.Reactive.Linq;
 
 namespace Time2Brew.Core
 {
@@ -31,6 +32,11 @@ namespace Time2Brew.Core
 			//for the grain wash
 			SpargeWaterTemperature = 170.0; 
 
+			NavigateToMashTimer = ReactiveCommand.Create ();
+			NavigateToMashTimer
+				.ObserveOn (RxApp.MainThreadScheduler)
+				.Subscribe (x => HostScreen.Router.Navigate.Execute (new MashTimerViewModel (HostScreen, data)));
+
 		}
 
 		[IgnoreDataMember]
@@ -42,6 +48,8 @@ namespace Time2Brew.Core
 
 		[IgnoreDataMember]
 		public IScreen HostScreen { get; protected set; }
+
+		public ReactiveCommand<object> NavigateToMashTimer { get; private set; }
 
 		[DataMember]
 		public double TotalWaterVolume {

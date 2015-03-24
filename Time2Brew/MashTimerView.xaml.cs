@@ -11,6 +11,12 @@ namespace Time2Brew.Core
 		public MashTimerView ()
 		{
 			InitializeComponent ();
+
+			this.OneWayBind (ViewModel, vm => vm.ClockText, v => v.lblClockDisplay.Text);
+			this.BindCommand (ViewModel, vm => vm.StartTimer, v => v.btnStart);
+			this.BindCommand (ViewModel, vm => vm.PauseTimer, v => v.btnPause);
+			this.BindCommand (ViewModel, vm => vm.ResetTimer, v => v.btnReset);
+
 		}
 
 		public MashTimerViewModel ViewModel {

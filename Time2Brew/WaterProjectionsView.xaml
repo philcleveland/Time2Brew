@@ -28,6 +28,7 @@
 					
 				</TableView.Root>
 			</TableView>
+			<Button x:Name="btnNext" Text="Next"/>
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>
