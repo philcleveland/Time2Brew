@@ -3,31 +3,31 @@
 	<ContentPage.Content>
 		<StackLayout>
 			<Label Text="Water Projections"/>
-			<TableView> 
-				<TableView.Root>
-					<TableSection>
-						<TextCell Text="Total water required (gal)"/>	
-						<TextCell x:Name="lblTotalWaterVolume"/>
-					</TableSection>
 
-					<TableSection>
-						<TextCell Text="Strike water volume (gal)"/>	
-						<TextCell x:Name="lblStrikeVolume"/>
+			<StackLayout Orientation="Vertical">
+				<StackLayout Orientation="Horizontal">
+					<Label Text="Total Water" FontAttributes="Bold" FontSize="Medium" VerticalOptions="Center"/>
+					<Label x:Name="lblTotalWaterVolume" FontSize="Large" VerticalOptions="Center"/>
+					<Label x:Name="lblTotalWaterVolumeUnits" FontSize="Medium" VerticalOptions="Center"/>
+				</StackLayout>
 
-						<TextCell Text="Strike water temperature (F)"/>	
-						<TextCell x:Name="lblStrikeTemp"/>
-					</TableSection>
+				<StackLayout Orientation="Horizontal">
+					<Label Text="Strike Volume" FontAttributes="Bold" FontSize="Medium" VerticalOptions="Center"/>
+					<Label x:Name="lblStrikeVolume" FontSize="Large" VerticalOptions="Center"/>
+					<Label x:Name="lblStrikeVolumeUnits" FontSize="Medium" VerticalOptions="Center"/>
+					<Label x:Name="lblStrikeTemp" FontSize="Large" VerticalOptions="Center"/>
+					<Label x:Name="lblStrikeTempUnits" FontSize="Medium" VerticalOptions="Center"/>
+				</StackLayout>
 
-					<TableSection>
-						<TextCell Text="Sparge water volume (gal)"/>	
-						<TextCell x:Name="lblSpargeVolume"/>
+				<StackLayout Orientation="Horizontal">
+					<Label Text="Sparge Volume" FontAttributes="Bold" FontSize="Medium" VerticalOptions="Center"/>
+					<Label x:Name="lblSpargeVolume" FontSize="Large" VerticalOptions="Center"/>
+					<Label x:Name="lblSpargeVolumeUnits" FontSize="Medium" VerticalOptions="Center"/>
+					<Label x:Name="lblSpargeTemp" FontSize="Large" VerticalOptions="Center"/>
+					<Label x:Name="lblSpargeTempUnits" FontSize="Medium" VerticalOptions="Center"/>
+				</StackLayout>
+			</StackLayout>
 
-						<TextCell Text="Sparge water temperature (F)"/>	
-						<TextCell x:Name="lblSpargeTemp"/>
-					</TableSection>
-					
-				</TableView.Root>
-			</TableView>
 			<Button x:Name="btnNext" Text="Next"/>
 		</StackLayout>
 	</ContentPage.Content>

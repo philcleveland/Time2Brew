@@ -3,6 +3,7 @@ using ReactiveUI;
 using ReactiveUI.XamForms;
 using Xamarin.Forms;
 using Splat;
+using Akavache;
 
 namespace Time2Brew.Core
 {
@@ -25,8 +26,13 @@ namespace Time2Brew.Core
 			Locator.CurrentMutable.Register (() => new MashStatsView (), typeof(IViewFor<MashStatsViewModel>));
 			Locator.CurrentMutable.Register (() => new MashTimerView (), typeof(IViewFor<MashTimerViewModel>));
 			Locator.CurrentMutable.Register (() => new WaterProjectionsView (), typeof(IViewFor<WaterProjectionsViewModel>));
+			Locator.CurrentMutable.Register (() => new UserPreferencesPage (), typeof(IViewFor<UserPreferencesPageViewModel>));
+			Locator.CurrentMutable.Register (() => new BoolToTemperatureConverter (), typeof(IBindingTypeConverter));
 
-			Router.Navigate.Execute (new MainPageViewModel ());
+			BlobCache.ApplicationName = "Time2Brew";
+			BlobCache.EnsureInitialized ();
+
+			Router.Navigate.Execute (new MainPageViewModel (this, new UserSettings ()));
 		}
 
 		public Page CreateMainPage ()

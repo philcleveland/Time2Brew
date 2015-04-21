@@ -13,11 +13,11 @@ namespace Time2Brew.Core
 			get { return "Time 2 Brew"; }
 		}
 
-		public MainPageViewModel () : this (null)
-		{
-		}
+		//		public MainPageViewModel () : this (null)
+		//		{
+		//		}
 
-		public MainPageViewModel (IScreen hostScreen)
+		public MainPageViewModel (IScreen hostScreen, UserSettings userSettings)
 		{
 			HostScreen = hostScreen ?? Locator.Current.GetService<IScreen> ();
 
@@ -25,6 +25,11 @@ namespace Time2Brew.Core
 			NavigateStartBrewing
 				.ObserveOn (RxApp.MainThreadScheduler)
 				.Subscribe (_ => HostScreen.Router.Navigate.Execute (new GeneralBrewStatsViewModel (HostScreen)));
+
+			NavigateUserPreferences = ReactiveCommand.Create ();
+			NavigateUserPreferences
+				.ObserveOn (RxApp.MainThreadScheduler)
+				.Subscribe (_ => HostScreen.Router.Navigate.Execute (new UserPreferencesPageViewModel (HostScreen, userSettings)));
 		}
 
 		[IgnoreDataMember]
@@ -35,6 +40,9 @@ namespace Time2Brew.Core
 
 		[IgnoreDataMember]
 		public ReactiveCommand<object> NavigateStartBrewing { get; private set; }
+
+		[IgnoreDataMember]
+		public ReactiveCommand<object> NavigateUserPreferences { get; private set; }
 	}
 }
 

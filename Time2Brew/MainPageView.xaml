@@ -7,6 +7,7 @@
 		<StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
 			
 			<Button x:Name="btnStartBrewing" Text="Start Brewing" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
+			<Button x:Name="btnUserPreferences" Text="Preferences" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
 <!--			<Button x:Name="btnNewRecipe" Text="New Recipe" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
 			<Button x:Name="btnImportRecipe" Text="Import Recipe" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>-->
 

@@ -14,6 +14,7 @@ namespace Time2Brew.Core
 			InitializeComponent ();
 
 			this.BindCommand (ViewModel, vm => vm.NavigateStartBrewing, v => v.btnStartBrewing);
+			this.BindCommand (ViewModel, vm => vm.NavigateUserPreferences, v => v.btnUserPreferences);
 			//TODO
 //			this.BindCommand (ViewModel, vm => vm.NavigateNewRecipe, v => v.btnNewRecipe);
 //			this.BindCommand (ViewModel, vm => vm.NavigateImportRecipe, v => v.btnImportRecipe);

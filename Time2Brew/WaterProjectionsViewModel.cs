@@ -23,10 +23,10 @@ namespace Time2Brew.Core
 		{
 			HostScreen = hostScreen ?? Locator.Current.GetService<IScreen> ();
 
-			TotalWaterVolume = CalculateTotalWaterVolume (data);
-			StrikeWaterVolume = CalculateStrikeWaterVolume (data);
-			StrikeWaterTemperature = CaluclateStrikeWaterTemperature (data);
-			SpargeWaterVolume = TotalWaterVolume - StrikeWaterVolume;
+			TotalWaterVolume = Math.Round (CalculateTotalWaterVolume (data), 2);
+			StrikeWaterVolume = Math.Round (CalculateStrikeWaterVolume (data), 2);
+			StrikeWaterTemperature = Math.Round (CaluclateStrikeWaterTemperature (data), 2);
+			SpargeWaterVolume = Math.Round (TotalWaterVolume - StrikeWaterVolume, 2);
 			//TODO: Research sparge water temp. In a single infusion it seems to always be 
 			//170.  Not sure why. Is is like a second infusion or just empirically good
 			//for the grain wash
